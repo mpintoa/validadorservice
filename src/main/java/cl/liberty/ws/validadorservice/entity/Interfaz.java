@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NamedQuery;
 
 @Entity
-@NamedQuery(name = "Interfaz.findAll", query = "SELECT i FROM INTERFAZ i")
 @Table(name = "INTERFAZ")
-public class Interfaz implements Serializable {
+public class Interfaz implements Serializable{
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -34,11 +36,9 @@ public class Interfaz implements Serializable {
 	
 	
 	public Interfaz() {
-		super();
 	}
 
 	public Interfaz(String interfaz, String job, String usuario, String clave, Integer estado) {
-		super();
 		this.interfaz = interfaz;
 		this.job = job;
 		this.usuario = usuario;

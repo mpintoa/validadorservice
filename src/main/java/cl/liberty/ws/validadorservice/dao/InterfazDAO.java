@@ -4,39 +4,46 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import cl.liberty.ws.validadorservice.dao.hibernate.JPAUtil;
 import cl.liberty.ws.validadorservice.entity.Interfaz;
 
-@Transactional
 @Repository
 public class InterfazDAO implements IInterfazDAO {
-	
+
 	@PersistenceContext
-	private EntityManager entityManager;
-	
-	@SuppressWarnings("unchecked")
+	private EntityManager em;
+
 	@Override
-	@Transactional(readOnly = true)
 	public List<Interfaz> getAllArticles() {
-		
-	    // Check database version
-	    String sql = "FROM INTERFAZ";
 
-	    List<Interfaz> retorno = (List<Interfaz>) entityManager.createQuery(sql).getResultList();
-	    
-	    for(Interfaz obj: retorno) {
-	    	System.out.println("MPI->"+obj.toString());
-	    }
-	    System.out.println("MPI->"+retorno);
+		// Check database version
+		// String sql = "FROM INTERFAZ";
 
-	    entityManager.getTransaction().commit();
-	    entityManager.close();
-	    
-	    return retorno;
+		// EntityManager entityManager =
+		// JPAUtil.getEntityManagerFactory().createEntityManager();
+
+		/*
+		 * List<Interfaz> retorno = entityManager.createNativeQuery(
+		 * "SELECT * FROM INTERFAZ", Interfaz.class ) .getResultList();
+		 * 
+		 * //List<Interfaz> retorno = (List<Interfaz>)
+		 * entityManager.createQuery(sql).getResultList();
+		 * 
+		 * for(Interfaz obj: retorno) { System.out.println("MPI->"+obj.toString()); }
+		 * System.out.println("MPI->"+retorno);
+		 * 
+		 * entityManager.getTransaction().commit(); entityManager.close();
+		 * 
+		 * return retorno;
+		 */
+		CriteriaQuery<Interfaz> criteriaQuery = em.getCriteriaBuilder().createQuery(Interfaz.class);
+		@SuppressWarnings("unused")
+		Root<Interfaz> root = criteriaQuery.from(Interfaz.class);
+		return em.createQuery(criteriaQuery).getResultList();
 	}
 
 }

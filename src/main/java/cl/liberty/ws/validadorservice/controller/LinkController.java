@@ -21,12 +21,18 @@ public class LinkController {
 	 private IInterfazService interfazService;
 
 	@RequestMapping(value = "/obtener", method = RequestMethod.GET, 
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public ResponseEntity<List<Interfaz>> getAllArticles() {
-		System.out.println("prueba");
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	//@ResponseBody
+	//public ResponseEntity<List<Interfaz>> getAllArticles() {
+	public List<Interfaz> getAllArticles() {
+				System.out.println("prueba");
 		List<Interfaz> lista = interfazService.getAllArticles();
 		
-		return new ResponseEntity<List<Interfaz>>(lista, HttpStatus.OK);
+		for(Interfaz obj : lista) {
+			System.out.println("**************************** MPI *******************************");
+			System.out.println(obj.toString());
+		}
+		
+		return lista;
 	}
 }

@@ -7,7 +7,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.142.123.98:3306/gldevdb" />
 			<property name="javax.persistence.jdbc.user" value="lchsqladmin" />
 			<property name="javax.persistence.jdbc.password" value="epseeepyls!1" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<!--property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" / -->
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 		</properties>
