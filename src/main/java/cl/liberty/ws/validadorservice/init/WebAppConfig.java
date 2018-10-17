@@ -9,14 +9,16 @@ import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration // Specifies the class as configuration
 @EnableTransactionManagement
+@EnableWebMvc
 @ComponentScans(value = { @ComponentScan("cl.liberty.ws.validadorservice.dao"),
-		@ComponentScan("cl.liberty.ws.validadorservice.controller"),
-      @ComponentScan("cl.liberty.ws.validadorservice.service") })
+						  @ComponentScan("cl.liberty.ws.validadorservice.controller"),
+					      @ComponentScan("cl.liberty.ws.validadorservice.service") })
 public class WebAppConfig {
 
 	@Bean

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,10 +20,9 @@ public class LinkController {
 	 private IInterfazService interfazService;
 
 	@RequestMapping(value = "/obtener", method = RequestMethod.GET, 
-			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	//@ResponseBody
-	//public ResponseEntity<List<Interfaz>> getAllArticles() {
-	public List<Interfaz> getAllArticles() {
+			produces = "application/json")
+	@ResponseBody
+	public ResponseEntity<List<Interfaz>> getAllArticles() {
 				System.out.println("prueba");
 		List<Interfaz> lista = interfazService.getAllArticles();
 		
@@ -33,6 +31,6 @@ public class LinkController {
 			System.out.println(obj.toString());
 		}
 		
-		return lista;
+		return new ResponseEntity<List<Interfaz>>(lista, HttpStatus.OK);
 	}
 }

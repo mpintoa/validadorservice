@@ -10,13 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "INTERFAZ")
-public class Interfaz implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class Interfaz {
 	@Id
 	@Column(name = "INTERFAZ")
 	private String interfaz;
